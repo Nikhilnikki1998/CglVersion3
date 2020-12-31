@@ -277,8 +277,8 @@ public class UserInterface {
 			 * creating the board, and changing the color of the cells which are true, and then adding them to
 			 * even canvas and then adding them to the window.
 			 */
-			start.Start(cells, boardSizeHeight);
-			for (int i =0; i <boardSizeHeight; i++){
+			start.Start(cells,boardSizeWidth, boardSizeHeight);
+			for (int i =0; i <boardSizeWidth; i++){
 				for(int j =0; j< boardSizeHeight; j++) {
 					if(start.Board1.grid[i][j].check == true) {
 						Rectangle item = new Rectangle(6+i*cellSize, 6+j*cellSize,5,5);
@@ -335,7 +335,7 @@ public class UserInterface {
 		window.getChildren().remove(evenCanvas);
 		evenCanvas = new Pane();
 		start.nextGen();
-		for (int i =0; i <boardSizeHeight; i++){
+		for (int i =0; i <boardSizeWidth; i++){
 			for(int j =0; j< boardSizeHeight; j++) {
 				if(start.Board1.grid[i][j].check == true) {
 					Rectangle item = new Rectangle(6+i*cellSize, 6+j*cellSize,5,5);

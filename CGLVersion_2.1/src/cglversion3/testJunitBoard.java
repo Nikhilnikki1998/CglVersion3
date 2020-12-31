@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Assertions;
 public class testJunitBoard {
 	@Test
 	public void boardtestone() {
-		Board board1=new Board(10);
-		Board board2=new Board(10);
+		Board board1=new Board(10,10);
+		Board board2=new Board(10,10);
 		board1.createBoard();
 		board2.createBoard();
 		board2=board1.generateNextGeneration(board2);
@@ -27,8 +27,8 @@ public class testJunitBoard {
 	}
 	@Test
 	public void boardtesttwo() {
-		Board board1=new Board(10);
-		Board board2=new Board(10);
+		Board board1=new Board(10,10);
+		Board board2=new Board(10,10);
 		board1.createBoard();
 		board2.createBoard();
 		board1.grid[1][3].check=true;

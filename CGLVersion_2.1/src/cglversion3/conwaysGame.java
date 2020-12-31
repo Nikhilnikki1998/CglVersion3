@@ -6,14 +6,16 @@ package cglversion3;
 public class conwaysGame {
 	public Board Board1;
 	private int boardsize;
+	private int boardRect;
 	Board Board2;
 
 
 
-	public void Start(int[][] arr, int boardsize) {
+	public void Start(int[][] arr, int boardsize , int boardRect) {
 		// initializing the board with given live cells
 		this.boardsize = boardsize;
-		this.Board1 = new Board(boardsize);
+		this.Board1 = new Board(boardsize , boardRect);
+		this.boardRect = boardRect;
 		//creating the board.
 		this.Board1.createBoard();
 		for (int i = 0; i < arr.length; i++) {
@@ -25,7 +27,7 @@ public class conwaysGame {
 
 	public void nextGen() {
 		//creating the next generation
-		Board2 = new Board(boardsize);
+		Board2 = new Board(boardsize , boardRect);
 		Board2.createBoard();
 		Board2 = Board1.generateNextGeneration(Board2);
 		Board1 = Board2;
@@ -35,7 +37,7 @@ public class conwaysGame {
 	public void NthGen(int n) {
 		//creating the Nth generation
 		for (int i = 0; i < n; i++) {
-			Board2 = new Board(boardsize);
+			Board2 = new Board(boardsize, boardRect);
 			Board2.createBoard();
 			Board2 = Board1.generateNextGeneration(Board2);
 			if (Board1.printBoard().equals(Board2.printBoard())) {
@@ -49,7 +51,7 @@ public class conwaysGame {
 	public void checkingGen() {
 		//checking the current and the next gen for the infinite loop
 		for (;;) {
-			Board2 = new Board(boardsize);
+			Board2 = new Board(boardsize , boardRect);
 			Board2.createBoard();
 			Board2 = Board1.generateNextGeneration(Board2);
 //			System.out.println(Board1.printBoard());

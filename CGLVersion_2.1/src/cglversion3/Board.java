@@ -6,15 +6,17 @@ package cglversion3;
 public class Board {
 	public Cell[][] grid;
 	private int size;
-	public Board(int size) {
+	private int rectSize; 
+	public Board(int size , int rectSize) {
 		// declaring the size of the board
 		this.size = size;
-		this.grid = new Cell[size][size];
+		this.rectSize = rectSize;
+		this.grid = new Cell[size][rectSize];
 	}
 	public Board createBoard() {
 		//creating the board function with default false.
 		for (int i=0;i<this.size;i++) {
-			for (int j=0; j<this.size;j++) {
+			for (int j=0; j<this.rectSize;j++) {
 				this.grid[i][j] = new Cell(false);
 			}
 		}
@@ -24,13 +26,13 @@ public class Board {
 		// printing the board length and other elements like current generation next generation which will be used for futher code
 		String con ="";
 		for (int i=0 ; i<this.size;i++) {
-			for (int j=0;j<this.size;j++) {
+			for (int j=0;j<this.rectSize;j++) {
 				if(this.grid[i][j].check==true) {
 					con +="*";
 					
 				}else {
 					con +=".";
-					if(j==this.size-1 && i<this.size -1) {
+					if(j==this.rectSize-1 && i<this.size -1) {
 						con =con+"\n";
 					}
 				}
@@ -43,36 +45,41 @@ public class Board {
 		
 		return ((nan % size) + size) % size;
 	}
+	public int modularDiv2(int nan) {
+		// modular division for corner cases
+		
+		return ((nan % rectSize) + rectSize) % rectSize;
+	}
 	public Board generateNextGeneration(Board gen) {
         for(int i=0;i<this.size;i++){
-            for(int j=0;j<this.size;j++){
+            for(int j=0;j<this.rectSize;j++){
             	//checking all the conditions for the cells to check for the next generations. 
                 int count=0;
-                if(this.grid[modularDiv(i-1)][modularDiv(j-1)].check){
+                if(this.grid[modularDiv(i-1)][modularDiv2(j-1)].check){
                     count+=1;
                 }
-                if(this.grid[modularDiv(i-1)][modularDiv(j)].check){
+                if(this.grid[modularDiv(i-1)][modularDiv2(j)].check){
                     count+=1;
                 }
-                if(this.grid[modularDiv(i-1)][modularDiv(j+1)].check){
+                if(this.grid[modularDiv(i-1)][modularDiv2(j+1)].check){
                     count+=1;
                 }
-                if(this.grid[modularDiv(i)][modularDiv(j-1)].check){
+                if(this.grid[modularDiv(i)][modularDiv2(j-1)].check){
                     count+=1;
                 }
-                if(this.grid[modularDiv(i)][modularDiv(j+1)].check){
+                if(this.grid[modularDiv(i)][modularDiv2(j+1)].check){
                     count+=1;
                 }
-                if(this.grid[modularDiv(i+1)][modularDiv(j-1)].check){
+                if(this.grid[modularDiv(i+1)][modularDiv2(j-1)].check){
                     count+=1;
                 }
-                if(this.grid[modularDiv(i+1)][modularDiv(j)].check){
+                if(this.grid[modularDiv(i+1)][modularDiv2(j)].check){
                     count+=1;
                 }
-                if(this.grid[modularDiv(i+1)][modularDiv(j+1)].check){
+                if(this.grid[modularDiv(i+1)][modularDiv2(j+1)].check){
                     count+=1;
                 }
-                if(this.grid[modularDiv(i)][modularDiv(j)].check){
+                if(this.grid[modularDiv(i)][modularDiv2(j)].check){
                     if(count==2 || count==3){
                         gen.grid[i][j].check=true;
                         

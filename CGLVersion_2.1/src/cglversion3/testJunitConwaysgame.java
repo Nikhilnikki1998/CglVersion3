@@ -12,7 +12,7 @@ public class testJunitConwaysgame {
 		conwaysGame start=new conwaysGame();
 		
 		int[][] arr={{1,3},{1,4},{2,4},{5,3},{5,4},{6,2},{6,3},{7,5},{8,4}};
-		start.Start(arr, 10);
+		start.Start(arr, 10,10);
 		start.nextGen();
 		Assertions.assertEquals("..........\n"
 				+ "...**.....\n"
@@ -71,7 +71,7 @@ public class testJunitConwaysgame {
 conwaysGame start1=new conwaysGame();
 		
 		int[][] arr={{1,3},{1,4},{2,4},{5,3},{5,4},{6,2},{6,3},{7,5},{8,4}};
-		start1.Start(arr, 10);
+		start1.Start(arr, 10,10);
 		start1.NthGen(20);
 		Assertions.assertEquals("..........\n"
 				+ "..........\n"
